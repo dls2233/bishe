@@ -1,0 +1,27 @@
+# JDK
+oracleJdk-21.jdk/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+app.log
+
+# Uploads (runtime generated)
+backend/uploads/
+
+# Gradle cache
+.gradle/
+
+# Node modules
+node_modules/
+
+# Maven wrapper jar
+.mvn/wrapper/maven-wrapper.jar

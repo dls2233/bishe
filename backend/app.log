@@ -1,0 +1,511 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-04-09T16:17:46.953+08:00  INFO 67265 --- [           main] c.c.security.CampusSecurityApplication   : Starting CampusSecurityApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 67265 (/Users/bytedance/GolandProjects/bishe/backend/target/campus-security-0.0.1-SNAPSHOT.jar started by bytedance in /Users/bytedance/GolandProjects/bishe/backend)
+2026-04-09T16:17:46.954+08:00  INFO 67265 --- [           main] c.c.security.CampusSecurityApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-09T16:17:47.726+08:00  INFO 67265 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-09T16:17:47.734+08:00  INFO 67265 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-09T16:17:47.734+08:00  INFO 67265 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-04-09T16:17:47.755+08:00  INFO 67265 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-09T16:17:47.755+08:00  INFO 67265 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 745 ms
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-04-09T16:17:48.125+08:00  INFO 67265 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-04-09T16:17:48.136+08:00  INFO 67265 --- [           main] c.c.security.CampusSecurityApplication   : Started CampusSecurityApplication in 1.437 seconds (process running for 1.709)
+2026-04-09T16:17:52.213+08:00  INFO 67265 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-09T16:17:52.213+08:00  INFO 67265 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-09T16:17:52.214+08:00  INFO 67265 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+开始同步网络新闻...
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@801c753] was not registered for synchronization because synchronization is not active
+2026-04-09T16:17:53.530+08:00  INFO 67265 --- [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-09T16:17:53.670+08:00  INFO 67265 --- [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ea096d0
+2026-04-09T16:17:53.673+08:00  INFO 67265 --- [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@496106431 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: （六）以 WhaleStudio 三层开发管理框架为例，分享一套可落地的 DataOps 开发规范 - ApacheSeaTunnel(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 103, （六）以 WhaleStudio 三层开发管理框架为例，分享一套可落地的 DataOps 开发规范 - ApacheSeaTunnel, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 611, 2026-04-09 16:12:17
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@801c753]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ed3639e] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1339481166 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 【诚邀参会】第一届亚洲边缘智能与服务计算会议（Asia EISC 2026） - DamoneF(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 104, 【诚邀参会】第一届亚洲边缘智能与服务计算会议（Asia EISC 2026） - DamoneF, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 197, 2026-04-09 16:12:17
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ed3639e]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3120d94c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1689949029 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: CentOS Stream 9/CentOS Stream 10配置静态IP和配置dnf/yum源 - 人生的哲理(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 100, CentOS Stream 9/CentOS Stream 10配置静态IP和配置dnf/yum源 - 人生的哲理, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 681, 2026-04-09 15:54:20
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3120d94c]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f42782] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1739157097 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 【实操】如何在社交语音游戏中集成AI队友——以鹅鸭杀为例 - ZEGO即构开发者(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 101, 【实操】如何在社交语音游戏中集成AI队友——以鹅鸭杀为例 - ZEGO即构开发者, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 687, 2026-04-09 15:54:20
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f42782]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72d2aa32] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@57363421 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: EnergyStarZ：让你的 Windows 笔记本续航延长 20% 的开源神器 - 胖纸不争(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 102, EnergyStarZ：让你的 Windows 笔记本续航延长 20% 的开源神器 - 胖纸不争, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 530, 2026-04-09 15:54:20
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72d2aa32]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f7720a6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1486069312 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 【Docker】Linux 迁移 docker 目录（软链接） - 双份浓缩馥芮白(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 98, 【Docker】Linux 迁移 docker 目录（软链接） - 双份浓缩馥芮白, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 739, 2026-04-09 15:18:51
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f7720a6]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@439feea3] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1164678246 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: AI到底会不会导致大规模失业？一次性把所有问题讲透！（深度好文） - 狂师(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 99, AI到底会不会导致大规模失业？一次性把所有问题讲透！（深度好文） - 狂师, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 863, 2026-04-09 15:18:51
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@439feea3]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78d17663] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1141339436 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 去中心化的内网聊天软件Lachat是如何实现的？ - zhuweisky(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 97, 去中心化的内网聊天软件Lachat是如何实现的？ - zhuweisky, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 548, 2026-04-09 14:49:52
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78d17663]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ff2070a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1558384377 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 2026年音频变压器厂家排名推荐：专业音频领域的核心之选 - 云云不昀(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 96, 2026年音频变压器厂家排名推荐：专业音频领域的核心之选 - 云云不昀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 898, 2026-04-09 14:31:53
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ff2070a]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e020635] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1903657640 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: AI开发-python-langchain框架（3-21-Structured Chat ReAct 智能体构建及对比 ZeroShot ReAct） - 万笑佛(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 84, AI开发-python-langchain框架（3-21-Structured Chat ReAct 智能体构建及对比 ZeroShot ReAct） - 万笑佛, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 905, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e020635]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d1c60f] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1564236782 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: RFC 9535：JSONPath 的标准化之路 - 带刺的坐椅(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 85, RFC 9535：JSONPath 的标准化之路 - 带刺的坐椅, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 402, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d1c60f]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bcaa69e] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@380041814 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 为什么给 new 设计一个 realloc 是必要的 - lil_tea(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 86, 为什么给 new 设计一个 realloc 是必要的 - lil_tea, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 998, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bcaa69e]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26675fb3] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1758983095 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 从零学习Kafka：位移与高水位 - Jackeyzhe(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 87, 从零学习Kafka：位移与高水位 - Jackeyzhe, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 376, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26675fb3]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3102b9ce] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@763687578 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 拆解 Claude Code SubAgent：隔离、专业化与权限设计 - knqiufan(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 88, 拆解 Claude Code SubAgent：隔离、专业化与权限设计 - knqiufan, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 392, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3102b9ce]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25c1a66c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@27899859 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 在 Web 界面直接编辑 DESIGN.md：从思路到实现 - Newbe36524(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 89, 在 Web 界面直接编辑 DESIGN.md：从思路到实现 - Newbe36524, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 194, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@25c1a66c]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ea9edb8] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@385081031 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: ClawHub 24 小时热门 Top 10 | 2026 年 04 月 09 日 - 扫地僧2015(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 90, ClawHub 24 小时热门 Top 10 | 2026 年 04 月 09 日 - 扫地僧2015, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 752, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ea9edb8]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4da6839b] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1007907770 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 【从0到1构建一个ClaudeAgent】工具与执行-Agent循环 - 程序员Seven(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 91, 【从0到1构建一个ClaudeAgent】工具与执行-Agent循环 - 程序员Seven, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 445, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4da6839b]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298c42a3] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1355785810 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: Anthropic 推出 Claude Mythos：一个“强到不敢公开”的前沿模型 - 小贾嗯嗯(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 92, Anthropic 推出 Claude Mythos：一个“强到不敢公开”的前沿模型 - 小贾嗯嗯, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 278, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@298c42a3]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3700e6e8] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2094150641 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 电子小白之集成电路 - Tlink(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 93, 电子小白之集成电路 - Tlink, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 619, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3700e6e8]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12ad006c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@573211511 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news WHERE title = ? LIMIT 1
+==> Parameters: 运筹学WebApp实验体系OR-LabX：建模·优化·AI决策一体化框架 - 郝hai(String)
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 94, 运筹学WebApp实验体系OR-LabX：建模·优化·AI决策一体化框架 - 郝hai, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 667, 2026-04-09 11:44:25
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12ad006c]
+网络新闻同步完成！
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a7f5a9f] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@239128328 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news ORDER BY create_time DESC
+==> Parameters: 
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 103, （六）以 WhaleStudio 三层开发管理框架为例，分享一套可落地的 DataOps 开发规范 - ApacheSeaTunnel, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 611, 2026-04-09 16:12:17
+<==        Row: 104, 【诚邀参会】第一届亚洲边缘智能与服务计算会议（Asia EISC 2026） - DamoneF, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 197, 2026-04-09 16:12:17
+<==        Row: 100, CentOS Stream 9/CentOS Stream 10配置静态IP和配置dnf/yum源 - 人生的哲理, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 681, 2026-04-09 15:54:20
+<==        Row: 101, 【实操】如何在社交语音游戏中集成AI队友——以鹅鸭杀为例 - ZEGO即构开发者, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 687, 2026-04-09 15:54:20
+<==        Row: 102, EnergyStarZ：让你的 Windows 笔记本续航延长 20% 的开源神器 - 胖纸不争, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 530, 2026-04-09 15:54:20
+<==        Row: 98, 【Docker】Linux 迁移 docker 目录（软链接） - 双份浓缩馥芮白, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 739, 2026-04-09 15:18:51
+<==        Row: 99, AI到底会不会导致大规模失业？一次性把所有问题讲透！（深度好文） - 狂师, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 863, 2026-04-09 15:18:51
+<==        Row: 97, 去中心化的内网聊天软件Lachat是如何实现的？ - zhuweisky, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 548, 2026-04-09 14:49:52
+<==        Row: 96, 2026年音频变压器厂家排名推荐：专业音频领域的核心之选 - 云云不昀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 898, 2026-04-09 14:31:53
+<==        Row: 84, AI开发-python-langchain框架（3-21-Structured Chat ReAct 智能体构建及对比 ZeroShot ReAct） - 万笑佛, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 905, 2026-04-09 11:44:25
+<==        Row: 85, RFC 9535：JSONPath 的标准化之路 - 带刺的坐椅, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 402, 2026-04-09 11:44:25
+<==        Row: 86, 为什么给 new 设计一个 realloc 是必要的 - lil_tea, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 998, 2026-04-09 11:44:25
+<==        Row: 87, 从零学习Kafka：位移与高水位 - Jackeyzhe, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 376, 2026-04-09 11:44:25
+<==        Row: 88, 拆解 Claude Code SubAgent：隔离、专业化与权限设计 - knqiufan, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 392, 2026-04-09 11:44:25
+<==        Row: 89, 在 Web 界面直接编辑 DESIGN.md：从思路到实现 - Newbe36524, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 194, 2026-04-09 11:44:25
+<==        Row: 90, ClawHub 24 小时热门 Top 10 | 2026 年 04 月 09 日 - 扫地僧2015, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 752, 2026-04-09 11:44:25
+<==        Row: 91, 【从0到1构建一个ClaudeAgent】工具与执行-Agent循环 - 程序员Seven, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 445, 2026-04-09 11:44:25
+<==        Row: 92, Anthropic 推出 Claude Mythos：一个“强到不敢公开”的前沿模型 - 小贾嗯嗯, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 278, 2026-04-09 11:44:25
+<==        Row: 93, 电子小白之集成电路 - Tlink, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 619, 2026-04-09 11:44:25
+<==        Row: 94, 运筹学WebApp实验体系OR-LabX：建模·优化·AI决策一体化框架 - 郝hai, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 667, 2026-04-09 11:44:25
+<==        Row: 95, 告别手写 API 胶水代码：FastAPI 与 Vue 的“契约自动机” OpenAPI 实战 - 一名程序媛呀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 203, 2026-04-09 11:44:25
+<==        Row: 77, Claude Code通关手册（三）：CLAUDE.md深度实战 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 294, 2026-04-09 06:34:43
+<==        Row: 78, Codex 和 OpenClaw，到底差在哪？ - AlfredZhao, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 119, 2026-04-09 06:34:43
+<==        Row: 79, 最小二乘问题详解18：增量式SFM核心流程实现 - charlee44, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 565, 2026-04-09 06:34:43
+<==        Row: 80, 深度学习进阶（五）Vision Transformer - 哥布林学者, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 400, 2026-04-09 06:34:43
+<==        Row: 81, Mach-O 文件结构 - chaoguo1234, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 477, 2026-04-09 06:34:43
+<==        Row: 82, 小作坊 GitHub 协作闭环：fork-sync-dev-pr-merge 实战指南 - FreakStudio, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 138, 2026-04-09 06:34:43
+<==        Row: 83, 【OpenClaw】通过 Nanobot 源码学习架构---（5）Context - 罗西的思考, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 966, 2026-04-09 06:34:43
+<==        Row: 76, GitHub 热门项目 Top 10 | 2026 年 04 月 08 日 - 扫地僧2015, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 105, 2026-04-08 20:05:41
+<==        Row: 72, 浅谈AI与Skill——从Claude Code看AI工具如何重塑技能价值 - meetviolet, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 624, 2026-04-08 18:03:37
+<==        Row: 73, 温度传感器芯片-温湿度传感器芯片代理商-（sensylink）申矽凌代理商-深圳市微效电子有限公司 - 羁勒, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 248, 2026-04-08 18:03:37
+<==        Row: 74, VOOHU沃虎音频变压器功能解析——噪声隔离、阻抗匹配、信号平衡转换 - 云云不昀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 106, 2026-04-08 18:03:37
+<==        Row: 75, 蒙提霍尔问题-经典的三扇门问题 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 681, 2026-04-08 18:03:37
+<==        Row: 66, Agent Skill 踩坑记录 | SpringBoot 打包后 Skill 加载失败问题排查与解决 - LucaJu, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 153, 2026-04-08 17:03:37
+<==        Row: 67, AI 时代，满分的程序员简历是怎么样的？附简历模板 - 程序员鱼皮, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 128, 2026-04-08 17:03:37
+<==        Row: 68, 银河麒麟v11源码（cri-o）编译rpm包全流程详解 - 塔克拉玛攻城狮, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 166, 2026-04-08 17:03:37
+<==        Row: 69, Loki MCP Server -支持Claude Desktop/Claude Code/Cursor 等客户端通过自然语言查询日志 - JameMei, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 620, 2026-04-08 17:03:37
+<==        Row: 70, Slickflow 规则集与 NRules 集成实践：从设计到产品落地 - slickflowteam, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 323, 2026-04-08 17:03:37
+<==        Row: 71, 从OpenClaw和Claude code的设计上学习Agent编排 - ZCry, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 267, 2026-04-08 17:03:37
+<==        Row: 65, 首个开源世界模型，李飞飞点赞：把视频直接变成一个可探索的 4D 世界 - 子木聊出海, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 699, 2026-04-08 15:13:49
+<==        Row: 62, 筑基期：掌握Odoo基础核心知识点01 - okkk!!!, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 783, 2026-04-08 14:13:34
+<==        Row: 63, 一个命令救命：GitHub 爆火项目 thefuck，真把我笑服了 - 程序员小崔日记, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 457, 2026-04-08 14:13:34
+<==        Row: 64, 统计学WebApp实验体系：从概率直觉到AI赋能的能力进阶 - 郝hai, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 736, 2026-04-08 14:13:34
+<==        Row: 59, UEFI Application 如何调用 Protocol - 阿源-, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 482, 2026-04-08 12:53:11
+<==        Row: 60, 嵌套 H5 的跨端通信：iOS / Android / 小程序 / 浏览器 - 幼儿园技术家, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 633, 2026-04-08 12:53:11
+<==        Row: 61, SDD 之外是 Harness 吗？ - 锅总的程序人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 246, 2026-04-08 12:53:11
+<==        Row: 58, 企业微信服务商争源数字科技谈中小企业如何用好数字化工具 - 争源数字化, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 613, 2026-04-08 11:27:44
+<==        Row: 44, Python网络请求库，从 requests 到 httpx - 曦远Code, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 620, 2026-04-08 11:14:22
+<==        Row: 45, 【生产避坑】Flink CDC + SQL Server 无增量？5分钟定位，直接抄解决方案 - 小贾嗯嗯, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 500, 2026-04-08 11:14:22
+<==        Row: 46, 我花了一上午，帮一个 AI 找到了自己的"亲生父母" - 编写人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 575, 2026-04-08 11:14:22
+<==        Row: 47, 使用 Python 将 Excel 数据批量导入到数据库中（SQLite） - LAYONTHEGROUND, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 970, 2026-04-08 11:14:22
+<==        Row: 48, 推荐3款必备“测试神器”Skill：用例生成、根因分析一键搞定 - 狂师, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 122, 2026-04-08 11:14:22
+<==        Row: 49, PostgreSQL 数据误删 止损操作 - 古渡蓝按, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 816, 2026-04-08 11:14:22
+<==        Row: 50, 用300行代码手写SpringBoot核心原理 - 程序员Seven, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 172, 2026-04-08 11:14:22
+<==        Row: 51, AI新时代真的来了,不管愿意还是不愿意 - Tlink, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 288, 2026-04-08 11:14:22
+<==        Row: 52, MAF快速入门（22）声明式Agent实战 - EdisonZhou, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 346, 2026-04-08 11:14:22
+<==        Row: 53, .NET 高级开发 | i18n 原理、实现一个 i18n 框架 - 痴者工良, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 951, 2026-04-08 11:14:22
+<==        Row: 54, 都是微软亲儿子，WPF凭啥干不掉WinForm？这3个场景说明白了 - 码农刚子, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 312, 2026-04-08 11:14:22
+<==        Row: 55, 到底是我在上班，还是 OpenClaw 在上班？ - 贾克斯的平行世界, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 83, 2026-04-08 11:14:22
+<==        Row: 56, Postgres - Listen/Notify构建轻量级发布订阅系统 - 花酒锄作田, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 263, 2026-04-08 11:14:22
+<==        Row: 57, 代码之外周刊（第 172 期）：自控力的真相：不是忍耐，是喜欢 - 我没有三颗心脏, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 330, 2026-04-08 11:14:22
+<==        Row: 42, 干货！Ubuntu 快速部署 Cloudreve ：打造全功能私有云盘 - 运维智库, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 405, 2026-04-07 22:13:56
+<==        Row: 43, 基于Rust开发的m3u8下载器M3U8Quicker：支持断点续传、边下边播 - 刘布斯yy, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 429, 2026-04-07 22:13:56
+<==        Row: 41, Claude Code通关手册（一）：转角遇到爱，真香体验 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 897, 2026-04-07 21:13:56
+<==        Row: 40, 从Claude Code源码泄露看AI编程工具的透明化革命 - 喝酒届最摇的老头, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 39, 2026-04-07 19:49:56
+<==        Row: 20, Spring-AI 与 Solon-AI 深度对比分析报告 - 带刺的坐椅, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 834, 2026-04-07 19:33:47
+<==        Row: 21, OpenSpec + Claude Code 实战指南：让 AI 不只是会写代码，而是先按规格把事做对 - 资深Ctrl+V整改办主任, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 817, 2026-04-07 19:33:47
+<==        Row: 22, 我帮你测过了，测试圈排名第一的 Skill 果然牛逼 - 久曲健, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 356, 2026-04-07 19:33:47
+<==        Row: 23, 环形缓冲区在嵌入式系统中的应用：串口中断VS主循环 - 快乐的乙炔, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 366, 2026-04-07 19:33:47
+<==        Row: 24, 热门视频是怎样炼成的——基于 B站“每周必看”的内容生态历时性分析 - 方而静, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 742, 2026-04-07 19:33:47
+<==        Row: 25, AI 写代码的时代，为什么动态语言开始显得更“便宜”了？ - ChatInfo, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 723, 2026-04-07 19:33:47
+<==        Row: 26, 在 .NET 中使用 Moonshot Kimi + AgentFramework：从 SDK 到 Agent 的完整实践 - View12138, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 312, 2026-04-07 19:33:47
+<==        Row: 27, 基于全同态加密的逻辑回归心脏病预测示例详解 - weiwei22844, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 256, 2026-04-07 19:33:47
+<==        Row: 28, AI开发-python-langchain框架（3-20-智能问答ZeroShot_ReAct Agent 从零搭建） - 万笑佛, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 504, 2026-04-07 19:33:47
+<==        Row: 29, 手撕 Transformer (5)：模型构建 - 茴香豆的茴, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 864, 2026-04-07 19:33:47
+<==        Row: 30, 代码过载时代：会写代码已经不牛了，会“删代码”才是真高手 - 码农刚子, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 431, 2026-04-07 19:33:47
+<==        Row: 31, SpringCloud进阶--RabbitMQ消息队列（完结） - NE_STOP, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 261, 2026-04-07 19:33:47
+<==        Row: 32, 一、先了解：MCP 公开服务市场 - LucaJu, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 499, 2026-04-07 19:33:47
+<==        Row: 33, 龙芯2k0300 - 走马观碑组Gazebo仿真环境搭建（下） - 大奥特曼打小怪兽, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 89, 2026-04-07 19:33:47
+<==        Row: 34, 深度解析Claude Code 51万行源码背后的设计实现 - 张永清, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 209, 2026-04-07 19:33:47
+<==        Row: 35, 理论都会，实战就废？7个分析模板，帮你打通任督二脉 - wang_yb, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 129, 2026-04-07 19:33:47
+<==        Row: 36, 【Ubuntu】配置 WSL 环境时，启动虚拟机平台时进度条卡住 - 膝盖中箭卫兵, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 201, 2026-04-07 19:33:47
+<==        Row: 37, 万字详解 RAG 基础概念：什么是 RAG？ 为什么需要？工作原理是？ - JavaGuide, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 292, 2026-04-07 19:33:47
+<==        Row: 38, AI时代的变更到底怎么管？（抛砖引玉版） - 锅总的程序人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 470, 2026-04-07 19:33:47
+<==        Row: 39, AI对普通人到底有什么用？这8个场景告诉你答案 - 观海云不远, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 7, 2026-04-07 19:33:47
+<==        Row: 5, 
+				毒蜂袭来女校长救学生自己却身负重伤 已透析两次
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 200, 2026-04-07 19:29:39
+<==        Row: 6, 
+				杭州闹市老房子里抓走50多个男人 现场大跌眼镜
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 811, 2026-04-07 19:29:39
+<==        Row: 7, 
+				百年沉船在葡萄牙被发现 载有中国明万历年间瓷器
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 707, 2026-04-07 19:29:39
+<==        Row: 8, 
+				40度高烧不退多脏器损害 女子因这个小虫差点没命
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 304, 2026-04-07 19:29:39
+<==        Row: 9, 
+				中通快递员性侵案受害人：听快递两字就浑身发抖
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 131, 2026-04-07 19:29:39
+<==        Row: 10, 
+				认购共享单车每天返利60元？小伙转完账就被拉黑
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 729, 2026-04-07 19:29:39
+<==        Row: 11, 
+				男子被鱼刺扎伤要截肢 当心这些小伤口惹出大麻烦
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 862, 2026-04-07 19:29:39
+<==        Row: 12, 
+				安徽一年轻男子陈尸车内：手腕部有血 颈上有绳子
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 608, 2026-04-07 19:29:39
+<==        Row: 13, 
+				河北一小型飞机坠落游客遇难 网友拍下坠机瞬间
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 999, 2026-04-07 19:29:39
+<==        Row: 14, 
+				奶奶半夜去捡废品 2岁孙子穿纸尿裤独自出门寻找
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 537, 2026-04-07 19:29:39
+<==        Row: 15, 
+				加油后80多万豪车报废？ 车主:油中三分之一是水
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 823, 2026-04-07 19:29:39
+<==        Row: 16, 
+				遭优步司机强迫“兜风” 美19岁女孩跳窗逃生
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 8, 2026-04-07 19:29:39
+<==        Row: 17, 
+				18岁女孩同服2种感冒药身亡 这些东西千万别混吃
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 307, 2026-04-07 19:29:39
+<==        Row: 18, 
+				吃出蟑螂要求赔偿被说是敲诈 食客起诉索10倍赔偿
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 587, 2026-04-07 19:29:39
+<==        Row: 19, 
+				男子吞下48包海洛因人体运毒 下高铁就被警方抓获
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 326, 2026-04-07 19:29:39
+<==        Row: 1, 关于开展2026年春季学期校园安全教育月的通知, 通知公告, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 1251, 2026-04-02 17:28:10
+<==        Row: 2, 警惕新型电信诈骗！近期多名大学生中招, 防骗预警, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 3420, 2026-04-02 17:28:10
+<==        Row: 3, 实验室安全无小事，这些违规操作千万别做, 实验室安全, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 890, 2026-04-02 17:28:10
+<==        Row: 4, 春季传染病高发，校园防疫指南请收好, 健康卫生, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 2100, 2026-04-02 17:28:10
+<==      Total: 104
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a7f5a9f]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a5b848c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1151103927 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_goods WHERE stock > 0 ORDER BY create_time DESC
+==> Parameters: 
+<==    Columns: id, name, description, image_url, points_required, stock, create_time
+<==        Row: 5, 瑞幸咖啡代金券 (20元), 全场通用，不限门店，有效期30天, https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80, 800, 200, 2026-04-02 10:57:31
+<==        Row: 6, 食堂霸王餐券 (50元), 可在校内任意食堂窗口使用，享受免费美食, https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80, 1500, 50, 2026-04-02 10:57:31
+<==        Row: 7, 校园健身房周卡, 免费使用校园健身房所有器械，限时一周, https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=300&q=80, 1000, 100, 2026-04-02 10:57:31
+<==        Row: 9, 罗技无线鼠标 M185, 稳定连接，长效电池，办公学习好帮手, https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=300&q=80, 2500, 19, 2026-04-02 10:57:31
+<==        Row: 10, 运动水杯 1000ml, 大容量Tritan材质，防摔防漏，带刻度, https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=300&q=80, 600, 150, 2026-04-02 10:57:31
+<==        Row: 12, 校园打印店100张打印券, 支持黑白/彩色打印，论文复习资料免费打, https://images.unsplash.com/photo-1562564055-71e051d33c19?auto=format&fit=crop&w=300&q=80, 400, 500, 2026-04-02 10:57:31
+<==        Row: 13, 挂脖小风扇, 夏季消暑神器，三挡风力，USB充电, https://images.unsplash.com/photo-1618365908648-e71bd5716cba?auto=format&fit=crop&w=300&q=80, 700, 120, 2026-04-02 10:57:31
+<==        Row: 14, 真无线蓝牙耳机, 降噪入耳式，超长续航，沉浸式音乐体验, https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80, 3000, 10, 2026-04-02 10:57:31
+<==        Row: 1, 重邮定制帆布袋, 校园文创周边，结实耐用，适合装书本和杂物, https://cbu01.alicdn.com/img/ibank/O1CN019fqDEo29EXTPwoOUd_!!2207265658036-0-cib.jpg, 500, 50, 2026-04-01 20:16:30
+<==        Row: 2, 便携式灭火器, 车载/宿舍两用便携式水基型灭火器，安全防范必备, https://img5.jc001.cn/img/448/1440448/5f056ef908c60.jpg, 1200, 14, 2026-04-01 20:16:30
+<==        Row: 3, 校园网免费月卡, 免除一个月校园网费，畅享高速网络, https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=300&q=80, 800, 100, 2026-04-01 20:16:30
+<==        Row: 4, 小米充电宝 10000mAh, 大容量快充充电宝，出门不断电, https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=300&q=80, 2000, 5, 2026-04-01 20:16:30
+<==      Total: 12
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a5b848c]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@326d4392] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1014750202 wrapping com.mysql.cj.jdbc.ConnectionImpl@2ea096d0] will not be managed by Spring
+==>  Preparing: SELECT * FROM sys_news ORDER BY create_time DESC
+==> Parameters: 
+<==    Columns: id, title, category, content, cover_url, views, create_time
+<==        Row: 103, （六）以 WhaleStudio 三层开发管理框架为例，分享一套可落地的 DataOps 开发规范 - ApacheSeaTunnel, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 611, 2026-04-09 16:12:17
+<==        Row: 104, 【诚邀参会】第一届亚洲边缘智能与服务计算会议（Asia EISC 2026） - DamoneF, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 197, 2026-04-09 16:12:17
+<==        Row: 100, CentOS Stream 9/CentOS Stream 10配置静态IP和配置dnf/yum源 - 人生的哲理, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 681, 2026-04-09 15:54:20
+<==        Row: 101, 【实操】如何在社交语音游戏中集成AI队友——以鹅鸭杀为例 - ZEGO即构开发者, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 687, 2026-04-09 15:54:20
+<==        Row: 102, EnergyStarZ：让你的 Windows 笔记本续航延长 20% 的开源神器 - 胖纸不争, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 530, 2026-04-09 15:54:20
+<==        Row: 98, 【Docker】Linux 迁移 docker 目录（软链接） - 双份浓缩馥芮白, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 739, 2026-04-09 15:18:51
+<==        Row: 99, AI到底会不会导致大规模失业？一次性把所有问题讲透！（深度好文） - 狂师, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 863, 2026-04-09 15:18:51
+<==        Row: 97, 去中心化的内网聊天软件Lachat是如何实现的？ - zhuweisky, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 548, 2026-04-09 14:49:52
+<==        Row: 96, 2026年音频变压器厂家排名推荐：专业音频领域的核心之选 - 云云不昀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 898, 2026-04-09 14:31:53
+<==        Row: 84, AI开发-python-langchain框架（3-21-Structured Chat ReAct 智能体构建及对比 ZeroShot ReAct） - 万笑佛, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 905, 2026-04-09 11:44:25
+<==        Row: 85, RFC 9535：JSONPath 的标准化之路 - 带刺的坐椅, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 402, 2026-04-09 11:44:25
+<==        Row: 86, 为什么给 new 设计一个 realloc 是必要的 - lil_tea, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 998, 2026-04-09 11:44:25
+<==        Row: 87, 从零学习Kafka：位移与高水位 - Jackeyzhe, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 376, 2026-04-09 11:44:25
+<==        Row: 88, 拆解 Claude Code SubAgent：隔离、专业化与权限设计 - knqiufan, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 392, 2026-04-09 11:44:25
+<==        Row: 89, 在 Web 界面直接编辑 DESIGN.md：从思路到实现 - Newbe36524, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 194, 2026-04-09 11:44:25
+<==        Row: 90, ClawHub 24 小时热门 Top 10 | 2026 年 04 月 09 日 - 扫地僧2015, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 752, 2026-04-09 11:44:25
+<==        Row: 91, 【从0到1构建一个ClaudeAgent】工具与执行-Agent循环 - 程序员Seven, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 445, 2026-04-09 11:44:25
+<==        Row: 92, Anthropic 推出 Claude Mythos：一个“强到不敢公开”的前沿模型 - 小贾嗯嗯, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 278, 2026-04-09 11:44:25
+<==        Row: 93, 电子小白之集成电路 - Tlink, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 619, 2026-04-09 11:44:25
+<==        Row: 94, 运筹学WebApp实验体系OR-LabX：建模·优化·AI决策一体化框架 - 郝hai, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 667, 2026-04-09 11:44:25
+<==        Row: 95, 告别手写 API 胶水代码：FastAPI 与 Vue 的“契约自动机” OpenAPI 实战 - 一名程序媛呀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 203, 2026-04-09 11:44:25
+<==        Row: 77, Claude Code通关手册（三）：CLAUDE.md深度实战 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 294, 2026-04-09 06:34:43
+<==        Row: 78, Codex 和 OpenClaw，到底差在哪？ - AlfredZhao, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 119, 2026-04-09 06:34:43
+<==        Row: 79, 最小二乘问题详解18：增量式SFM核心流程实现 - charlee44, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 565, 2026-04-09 06:34:43
+<==        Row: 80, 深度学习进阶（五）Vision Transformer - 哥布林学者, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 400, 2026-04-09 06:34:43
+<==        Row: 81, Mach-O 文件结构 - chaoguo1234, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 477, 2026-04-09 06:34:43
+<==        Row: 82, 小作坊 GitHub 协作闭环：fork-sync-dev-pr-merge 实战指南 - FreakStudio, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 138, 2026-04-09 06:34:43
+<==        Row: 83, 【OpenClaw】通过 Nanobot 源码学习架构---（5）Context - 罗西的思考, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 966, 2026-04-09 06:34:43
+<==        Row: 76, GitHub 热门项目 Top 10 | 2026 年 04 月 08 日 - 扫地僧2015, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 105, 2026-04-08 20:05:41
+<==        Row: 72, 浅谈AI与Skill——从Claude Code看AI工具如何重塑技能价值 - meetviolet, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 624, 2026-04-08 18:03:37
+<==        Row: 73, 温度传感器芯片-温湿度传感器芯片代理商-（sensylink）申矽凌代理商-深圳市微效电子有限公司 - 羁勒, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 248, 2026-04-08 18:03:37
+<==        Row: 74, VOOHU沃虎音频变压器功能解析——噪声隔离、阻抗匹配、信号平衡转换 - 云云不昀, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 106, 2026-04-08 18:03:37
+<==        Row: 75, 蒙提霍尔问题-经典的三扇门问题 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 681, 2026-04-08 18:03:37
+<==        Row: 66, Agent Skill 踩坑记录 | SpringBoot 打包后 Skill 加载失败问题排查与解决 - LucaJu, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 153, 2026-04-08 17:03:37
+<==        Row: 67, AI 时代，满分的程序员简历是怎么样的？附简历模板 - 程序员鱼皮, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 128, 2026-04-08 17:03:37
+<==        Row: 68, 银河麒麟v11源码（cri-o）编译rpm包全流程详解 - 塔克拉玛攻城狮, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 166, 2026-04-08 17:03:37
+<==        Row: 69, Loki MCP Server -支持Claude Desktop/Claude Code/Cursor 等客户端通过自然语言查询日志 - JameMei, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 620, 2026-04-08 17:03:37
+<==        Row: 70, Slickflow 规则集与 NRules 集成实践：从设计到产品落地 - slickflowteam, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 323, 2026-04-08 17:03:37
+<==        Row: 71, 从OpenClaw和Claude code的设计上学习Agent编排 - ZCry, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 267, 2026-04-08 17:03:37
+<==        Row: 65, 首个开源世界模型，李飞飞点赞：把视频直接变成一个可探索的 4D 世界 - 子木聊出海, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 699, 2026-04-08 15:13:49
+<==        Row: 62, 筑基期：掌握Odoo基础核心知识点01 - okkk!!!, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 783, 2026-04-08 14:13:34
+<==        Row: 63, 一个命令救命：GitHub 爆火项目 thefuck，真把我笑服了 - 程序员小崔日记, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 457, 2026-04-08 14:13:34
+<==        Row: 64, 统计学WebApp实验体系：从概率直觉到AI赋能的能力进阶 - 郝hai, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 736, 2026-04-08 14:13:34
+<==        Row: 59, UEFI Application 如何调用 Protocol - 阿源-, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 482, 2026-04-08 12:53:11
+<==        Row: 60, 嵌套 H5 的跨端通信：iOS / Android / 小程序 / 浏览器 - 幼儿园技术家, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 633, 2026-04-08 12:53:11
+<==        Row: 61, SDD 之外是 Harness 吗？ - 锅总的程序人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 246, 2026-04-08 12:53:11
+<==        Row: 58, 企业微信服务商争源数字科技谈中小企业如何用好数字化工具 - 争源数字化, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 613, 2026-04-08 11:27:44
+<==        Row: 44, Python网络请求库，从 requests 到 httpx - 曦远Code, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 620, 2026-04-08 11:14:22
+<==        Row: 45, 【生产避坑】Flink CDC + SQL Server 无增量？5分钟定位，直接抄解决方案 - 小贾嗯嗯, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 500, 2026-04-08 11:14:22
+<==        Row: 46, 我花了一上午，帮一个 AI 找到了自己的"亲生父母" - 编写人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 575, 2026-04-08 11:14:22
+<==        Row: 47, 使用 Python 将 Excel 数据批量导入到数据库中（SQLite） - LAYONTHEGROUND, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 970, 2026-04-08 11:14:22
+<==        Row: 48, 推荐3款必备“测试神器”Skill：用例生成、根因分析一键搞定 - 狂师, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 122, 2026-04-08 11:14:22
+<==        Row: 49, PostgreSQL 数据误删 止损操作 - 古渡蓝按, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 816, 2026-04-08 11:14:22
+<==        Row: 50, 用300行代码手写SpringBoot核心原理 - 程序员Seven, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 172, 2026-04-08 11:14:22
+<==        Row: 51, AI新时代真的来了,不管愿意还是不愿意 - Tlink, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 288, 2026-04-08 11:14:22
+<==        Row: 52, MAF快速入门（22）声明式Agent实战 - EdisonZhou, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 346, 2026-04-08 11:14:22
+<==        Row: 53, .NET 高级开发 | i18n 原理、实现一个 i18n 框架 - 痴者工良, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 951, 2026-04-08 11:14:22
+<==        Row: 54, 都是微软亲儿子，WPF凭啥干不掉WinForm？这3个场景说明白了 - 码农刚子, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 312, 2026-04-08 11:14:22
+<==        Row: 55, 到底是我在上班，还是 OpenClaw 在上班？ - 贾克斯的平行世界, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 83, 2026-04-08 11:14:22
+<==        Row: 56, Postgres - Listen/Notify构建轻量级发布订阅系统 - 花酒锄作田, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 263, 2026-04-08 11:14:22
+<==        Row: 57, 代码之外周刊（第 172 期）：自控力的真相：不是忍耐，是喜欢 - 我没有三颗心脏, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 330, 2026-04-08 11:14:22
+<==        Row: 42, 干货！Ubuntu 快速部署 Cloudreve ：打造全功能私有云盘 - 运维智库, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 405, 2026-04-07 22:13:56
+<==        Row: 43, 基于Rust开发的m3u8下载器M3U8Quicker：支持断点续传、边下边播 - 刘布斯yy, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 429, 2026-04-07 22:13:56
+<==        Row: 41, Claude Code通关手册（一）：转角遇到爱，真香体验 - 暮色之狐, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 897, 2026-04-07 21:13:56
+<==        Row: 40, 从Claude Code源码泄露看AI编程工具的透明化革命 - 喝酒届最摇的老头, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 39, 2026-04-07 19:49:56
+<==        Row: 20, Spring-AI 与 Solon-AI 深度对比分析报告 - 带刺的坐椅, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 834, 2026-04-07 19:33:47
+<==        Row: 21, OpenSpec + Claude Code 实战指南：让 AI 不只是会写代码，而是先按规格把事做对 - 资深Ctrl+V整改办主任, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 817, 2026-04-07 19:33:47
+<==        Row: 22, 我帮你测过了，测试圈排名第一的 Skill 果然牛逼 - 久曲健, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 356, 2026-04-07 19:33:47
+<==        Row: 23, 环形缓冲区在嵌入式系统中的应用：串口中断VS主循环 - 快乐的乙炔, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 366, 2026-04-07 19:33:47
+<==        Row: 24, 热门视频是怎样炼成的——基于 B站“每周必看”的内容生态历时性分析 - 方而静, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 742, 2026-04-07 19:33:47
+<==        Row: 25, AI 写代码的时代，为什么动态语言开始显得更“便宜”了？ - ChatInfo, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 723, 2026-04-07 19:33:47
+<==        Row: 26, 在 .NET 中使用 Moonshot Kimi + AgentFramework：从 SDK 到 Agent 的完整实践 - View12138, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 312, 2026-04-07 19:33:47
+<==        Row: 27, 基于全同态加密的逻辑回归心脏病预测示例详解 - weiwei22844, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 256, 2026-04-07 19:33:47
+<==        Row: 28, AI开发-python-langchain框架（3-20-智能问答ZeroShot_ReAct Agent 从零搭建） - 万笑佛, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 504, 2026-04-07 19:33:47
+<==        Row: 29, 手撕 Transformer (5)：模型构建 - 茴香豆的茴, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 864, 2026-04-07 19:33:47
+<==        Row: 30, 代码过载时代：会写代码已经不牛了，会“删代码”才是真高手 - 码农刚子, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 431, 2026-04-07 19:33:47
+<==        Row: 31, SpringCloud进阶--RabbitMQ消息队列（完结） - NE_STOP, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 261, 2026-04-07 19:33:47
+<==        Row: 32, 一、先了解：MCP 公开服务市场 - LucaJu, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 499, 2026-04-07 19:33:47
+<==        Row: 33, 龙芯2k0300 - 走马观碑组Gazebo仿真环境搭建（下） - 大奥特曼打小怪兽, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 89, 2026-04-07 19:33:47
+<==        Row: 34, 深度解析Claude Code 51万行源码背后的设计实现 - 张永清, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 209, 2026-04-07 19:33:47
+<==        Row: 35, 理论都会，实战就废？7个分析模板，帮你打通任督二脉 - wang_yb, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 129, 2026-04-07 19:33:47
+<==        Row: 36, 【Ubuntu】配置 WSL 环境时，启动虚拟机平台时进度条卡住 - 膝盖中箭卫兵, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 201, 2026-04-07 19:33:47
+<==        Row: 37, 万字详解 RAG 基础概念：什么是 RAG？ 为什么需要？工作原理是？ - JavaGuide, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 292, 2026-04-07 19:33:47
+<==        Row: 38, AI时代的变更到底怎么管？（抛砖引玉版） - 锅总的程序人生, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 470, 2026-04-07 19:33:47
+<==        Row: 39, AI对普通人到底有什么用？这8个场景告诉你答案 - 观海云不远, 科技前沿, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 7, 2026-04-07 19:33:47
+<==        Row: 5, 
+				毒蜂袭来女校长救学生自己却身负重伤 已透析两次
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 200, 2026-04-07 19:29:39
+<==        Row: 6, 
+				杭州闹市老房子里抓走50多个男人 现场大跌眼镜
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 811, 2026-04-07 19:29:39
+<==        Row: 7, 
+				百年沉船在葡萄牙被发现 载有中国明万历年间瓷器
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 707, 2026-04-07 19:29:39
+<==        Row: 8, 
+				40度高烧不退多脏器损害 女子因这个小虫差点没命
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 304, 2026-04-07 19:29:39
+<==        Row: 9, 
+				中通快递员性侵案受害人：听快递两字就浑身发抖
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 131, 2026-04-07 19:29:39
+<==        Row: 10, 
+				认购共享单车每天返利60元？小伙转完账就被拉黑
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 729, 2026-04-07 19:29:39
+<==        Row: 11, 
+				男子被鱼刺扎伤要截肢 当心这些小伤口惹出大麻烦
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 862, 2026-04-07 19:29:39
+<==        Row: 12, 
+				安徽一年轻男子陈尸车内：手腕部有血 颈上有绳子
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 608, 2026-04-07 19:29:39
+<==        Row: 13, 
+				河北一小型飞机坠落游客遇难 网友拍下坠机瞬间
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 999, 2026-04-07 19:29:39
+<==        Row: 14, 
+				奶奶半夜去捡废品 2岁孙子穿纸尿裤独自出门寻找
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80, 537, 2026-04-07 19:29:39
+<==        Row: 15, 
+				加油后80多万豪车报废？ 车主:油中三分之一是水
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 823, 2026-04-07 19:29:39
+<==        Row: 16, 
+				遭优步司机强迫“兜风” 美19岁女孩跳窗逃生
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 8, 2026-04-07 19:29:39
+<==        Row: 17, 
+				18岁女孩同服2种感冒药身亡 这些东西千万别混吃
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 307, 2026-04-07 19:29:39
+<==        Row: 18, 
+				吃出蟑螂要求赔偿被说是敲诈 食客起诉索10倍赔偿
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 587, 2026-04-07 19:29:39
+<==        Row: 19, 
+				男子吞下48包海洛因人体运毒 下高铁就被警方抓获
+			, 社会焦点, <<BLOB>>, https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80, 326, 2026-04-07 19:29:39
+<==        Row: 1, 关于开展2026年春季学期校园安全教育月的通知, 通知公告, <<BLOB>>, https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80, 1251, 2026-04-02 17:28:10
+<==        Row: 2, 警惕新型电信诈骗！近期多名大学生中招, 防骗预警, <<BLOB>>, https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80, 3420, 2026-04-02 17:28:10
+<==        Row: 3, 实验室安全无小事，这些违规操作千万别做, 实验室安全, <<BLOB>>, https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80, 890, 2026-04-02 17:28:10
+<==        Row: 4, 春季传染病高发，校园防疫指南请收好, 健康卫生, <<BLOB>>, https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=600&q=80, 2100, 2026-04-02 17:28:10
+<==      Total: 104
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@326d4392]
