@@ -15,7 +15,9 @@ import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -44,6 +46,8 @@ public class RagService {
     private int ragMaxChars;
 
     private volatile List<RagChunk> ragChunks = List.of();
+    // 倒排索引：关键词 -> 包含该关键词的 chunk 索引集合（方案一性能优化）
+    private volatile Map<String, List<Integer>> invertedIndex = Map.of();
     private List<Course> allCourses = List.of();
     private List<Exam> allExams = List.of();
     private Map<Long, List<Question>> examQuestionCache = new ConcurrentHashMap<>();
@@ -95,6 +99,25 @@ public class RagService {
         }
 
         this.ragChunks = chunks;
+        // 方案一：构建倒排索引，将 O(N) 全量扫描降为 O(候选数)，大幅提升大规模检索性能
+        this.invertedIndex = buildInvertedIndex(chunks);
+    }
+
+    /**
+     * 构建倒排索引：将每个 chunk 的关键词映射到它的索引位置。
+     * 查询阶段可根据 query 分词快速定位候选 chunk 子集，避免全量遍历。
+     */
+    private Map<String, List<Integer>> buildInvertedIndex(List<RagChunk> chunks) {
+        Map<String, List<Integer>> index = new HashMap<>();
+        for (int i = 0; i < chunks.size(); i++) {
+            for (String keyword : chunks.get(i).keywords()) {
+                if (!StringUtils.hasText(keyword)) {
+                    continue;
+                }
+                index.computeIfAbsent(keyword, k -> new ArrayList<>()).add(i);
+            }
+        }
+        return index;
     }
 
     private List<RagChunk> chunkCourse(Course course) {
@@ -175,14 +198,45 @@ public class RagService {
             return List.of();
         }
 
+        // 优化：按段落（换行）优先切分，避免固定长度切分把"切断电源"、"刷单返利"等短语拦腰斩断
         List<String> chunks = new ArrayList<>();
-        int length = content.length();
-        for (int start = 0; start < length; start += chunkSize) {
-            int end = Math.min(length, start + chunkSize);
-            chunks.add(content.substring(start, end));
+        String[] paragraphs = content.split("\\n");
+        StringBuilder current = new StringBuilder();
+        for (String para : paragraphs) {
+            if (current.length() + para.length() + 1 > chunkSize && current.length() > 0) {
+                chunks.add(current.toString());
+                current.setLength(0);
+            }
+            if (para.length() > chunkSize) {
+                // 段落本身过长，保存已累积内容后再按长度硬切
+                if (current.length() > 0) {
+                    chunks.add(current.toString());
+                    current.setLength(0);
+                }
+                for (int start = 0; start < para.length(); start += chunkSize) {
+                    int end = Math.min(para.length(), start + chunkSize);
+                    chunks.add(para.substring(start, end));
+                }
+            } else {
+                if (current.length() > 0) current.append("\n");
+                current.append(para);
+            }
+        }
+        if (current.length() > 0) {
+            chunks.add(current.toString());
         }
         return chunks;
     }
+
+    /** 领域专有短语白名单：这些词不会被默认分词切开，必须显式作为 keyword 索引 */
+    private static final String[] DOMAIN_PHRASES = {
+            "切断电源", "刷单返利", "安全账户", "高利贷", "锁入柜中", "电话办案",
+            "三不一多", "转账记录", "学业焦虑", "人际交往障碍", "换位思考",
+            "频繁谈论死亡", "适应障碍", "规律作息", "双人双锁", "操作资格",
+            "通风橱", "洗眼器", "流动清水", "废液桶", "干粉松动", "私接电源",
+            "湿衣物", "低姿匍匐", "就地打滚", "严禁乘坐电梯", "十不准", "热得快",
+            "火场逃生", "心理咨询", "心理健康", "灭火器", "废液", "诈骗", "焦虑", "防盗"
+    };
 
     private String normalize(String text) {
         return text == null ? "" : text.toLowerCase();
@@ -203,7 +257,19 @@ public class RagService {
     }
 
     private List<String> extractKeywords(String text) {
-        return tokenize(normalize(text));
+        List<String> base = tokenize(normalize(text));
+        // 补充：领域专有短语白名单，若正文中包含则显式纳入关键词索引
+        if (StringUtils.hasText(text)) {
+            Set<String> enriched = new LinkedHashSet<>(base);
+            String lower = normalize(text);
+            for (String phrase : DOMAIN_PHRASES) {
+                if (lower.contains(phrase.toLowerCase())) {
+                    enriched.add(phrase.toLowerCase());
+                }
+            }
+            return new ArrayList<>(enriched);
+        }
+        return base;
     }
 
     private int scoreChunk(String normalizedQuery, List<String> queryTerms, RagChunk chunk) {
@@ -291,8 +357,16 @@ public class RagService {
         String normalizedQuery = normalize(userQuery);
         List<String> queryTerms = tokenize(normalizedQuery);
 
+        // 方案一：通过倒排索引定位候选 chunk，将 O(N) 线性扫描优化为 O(候选数)
+        Set<Integer> candidateIdxSet = lookupCandidates(normalizedQuery, queryTerms);
+
         PriorityQueue<ChunkScore> heap = new PriorityQueue<>(Comparator.comparingInt(ChunkScore::score));
-        for (RagChunk chunk : ragChunks) {
+        List<RagChunk> chunkSnapshot = ragChunks;
+        for (Integer idx : candidateIdxSet) {
+            if (idx == null || idx < 0 || idx >= chunkSnapshot.size()) {
+                continue;
+            }
+            RagChunk chunk = chunkSnapshot.get(idx);
             int score = scoreChunk(normalizedQuery, queryTerms, chunk);
             if (score <= 0) {
                 continue;
@@ -310,9 +384,13 @@ public class RagService {
         List<ChunkScore> sorted = new ArrayList<>(heap);
         sorted.sort((a, b) -> Integer.compare(b.score(), a.score()));
 
+        // 优化：同源 chunk 补齐。当 Top-K 命中某一 course/exam 时，补充同源的其他 chunk，
+        // 避免长文档被 400 字硬切后某些关键词落在未被 Top-K 选中的片段中。
+        List<RagChunk> finalChunks = expandSameSourceChunks(sorted, chunkSnapshot);
+
         StringBuilder builder = new StringBuilder();
-        for (ChunkScore entry : sorted) {
-            appendChunk(builder, entry.chunk());
+        for (RagChunk chunk : finalChunks) {
+            appendChunk(builder, chunk);
             if (builder.length() >= ragMaxChars) {
                 break;
             }
@@ -323,5 +401,67 @@ public class RagService {
         }
 
         return builder.toString().trim();
+    }
+
+    /**
+     * 同源扩展：对 Top-K 中每个 chunk 所属的 (type, sourceId)，补齐该源下的所有兄弟 chunk，
+     * 保证长文档中的细节关键词不会因 400 字硬切 + Top-K 限制而被丢弃。
+     */
+    private List<RagChunk> expandSameSourceChunks(List<ChunkScore> sorted, List<RagChunk> allChunks) {
+        // 1. 收集命中的 (type, sourceId) 来源集合
+        Set<String> sourceKeys = new LinkedHashSet<>();
+        for (ChunkScore cs : sorted) {
+            sourceKeys.add(cs.chunk().type() + "#" + cs.chunk().sourceId());
+        }
+        // 2. 保留原 Top-K 顺序的主命中 chunk
+        List<RagChunk> expanded = new ArrayList<>();
+        Set<String> addedTexts = new HashSet<>();
+        for (ChunkScore cs : sorted) {
+            if (addedTexts.add(cs.chunk().text())) {
+                expanded.add(cs.chunk());
+            }
+        }
+        // 3. 补齐同源兄弟 chunk（用 text 做去重，避免 record equals 冲突）
+        for (RagChunk c : allChunks) {
+            String key = c.type() + "#" + c.sourceId();
+            if (sourceKeys.contains(key) && addedTexts.add(c.text())) {
+                expanded.add(c);
+            }
+        }
+        return expanded;
+    }
+
+    /**
+     * 利用倒排索引定位候选 chunk。
+     * 优先通过 query 分词命中；若无命中则退化为遍历索引 key，保证检索不遗漏子串匹配。
+     */
+    private Set<Integer> lookupCandidates(String normalizedQuery, List<String> queryTerms) {
+        Map<String, List<Integer>> indexSnapshot = invertedIndex;
+        if (indexSnapshot.isEmpty()) {
+            return Set.of();
+        }
+
+        Set<Integer> candidates = new LinkedHashSet<>();
+
+        // 1) 快速路径：query 分词精确命中索引 key
+        for (String term : queryTerms) {
+            List<Integer> posting = indexSnapshot.get(term);
+            if (posting != null) {
+                candidates.addAll(posting);
+            }
+        }
+
+        // 2) 慢速兜底：遍历索引 key，按"子串包含"策略召回（覆盖中文无分隔符的场景）
+        //    即使走到这里，也只是 O(K) 的字符串包含检测，K 为关键词总数，而非 O(N·L)
+        if (candidates.isEmpty()) {
+            for (Map.Entry<String, List<Integer>> entry : indexSnapshot.entrySet()) {
+                String key = entry.getKey();
+                if (key.length() > 1 && normalizedQuery.contains(key)) {
+                    candidates.addAll(entry.getValue());
+                }
+            }
+        }
+
+        return candidates;
     }
 }

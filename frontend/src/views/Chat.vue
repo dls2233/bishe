@@ -102,13 +102,14 @@ const loading = ref(false)
 
 const chatHistory = ref([])
 const MAX_CONVERSATIONS = 100
+const pendingRetryCommand = ref('')
 
 // 监听是否达到上限
 const isLimitReached = computed(() => {
   return chatHistory.value.filter(msg => msg.role === 'user').length >= MAX_CONVERSATIONS
 })
 
-// 组件加载时读取本地历史记录
+// 组件加载时读取本地历史记录 + 挂载重试方法
 onMounted(() => {
   const saved = localStorage.getItem('chat_history')
   if (saved) {
@@ -119,6 +120,8 @@ onMounted(() => {
       console.error('解析历史记录失败:', e)
     }
   }
+  // 挂载重试方法供 HTML 按钮调用
+  window.__retryAction = retryAction
 })
 
 // 监听聊天记录变化，并持久化到 localStorage
@@ -355,6 +358,14 @@ const sendMessage = async () => {
         scrollToBottom();
       } catch (e) {
         console.error("Action 解析执行失败:", e);
+        // 方案 B：通知用户 + 一键重试
+        chatHistory.value[aiMessageIndex].content +=
+          '\n\n⚠️ **课程/测评发布失败**：AI 生成的结构化数据解析异常，这可能是由于模型输出格式不规范导致的。\n\n' +
+          '<button class="retry-action-btn" onclick="window.__retryAction && window.__retryAction()">🔄 一键重试发布</button>';
+        // 保存重试上下文：最近一条用户指令
+        const lastUserMsg = chatHistory.value.filter(m => m.role === 'user').pop();
+        pendingRetryCommand.value = lastUserMsg ? lastUserMsg.content : '';
+        scrollToBottom();
       }
     }
 
@@ -371,6 +382,92 @@ const sendMessage = async () => {
     }
   }
 }
+
+// ===== 重试 Action 发布（方案 B）=====
+const retryAction = async () => {
+  if (!pendingRetryCommand.value || loading.value) return
+  loading.value = true
+
+  // 追加一条 AI 消息用于显示重试结果
+  chatHistory.value.push({ role: 'ai', content: '🔄 正在重试发布，请稍候...' })
+  const retryIndex = chatHistory.value.length - 1
+  scrollToBottom()
+
+  try {
+    const retryPrompt = '你是课程发布助手。用户要求你发布课程，上一次你生成的 JSON 解析失败了。' +
+      '这一次请**只输出**一个合法的 JSON 对象，不要输出任何多余文字，不要使用 Markdown 代码块。' +
+      '必须包含字段：action(值为 publish_course)、payload.title、payload.category、payload.coverUrl、' +
+      'payload.quizList(数组，每题包含 question、options[4个选项]、answer 正确选项索引)、payload.rewardPoints(值为10)。' +
+      '所有字符串用双引号，内部禁止出现未转义的双引号。'
+
+    const headers = { 'Content-Type': 'application/json' }
+    const body = {
+      model: 'Qwen/Qwen2.5-7B-Instruct',
+      messages: [
+        { role: 'system', content: retryPrompt },
+        { role: 'user', content: pendingRetryCommand.value }
+      ],
+      temperature: 0.1,
+      max_tokens: 2000,
+      stream: false
+    }
+
+    // 直接调用 LLM API（非流式，简洁可靠）
+    const res = await fetch('/api/chat/completions-sync', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body)
+    })
+    const data = await res.json()
+
+    let jsonStr = ''
+    if (data.choices && data.choices.length > 0) {
+      jsonStr = data.choices[0].message.content
+    }
+
+    // 尝试提取 JSON（可能裹了代码块）
+    const jsonMatch = jsonStr.match(/\{[\s\S]*\}/)
+    if (!jsonMatch) throw new Error('重试响应中未找到 JSON')
+
+    const actionData = JSON.parse(jsonMatch[0])
+
+    if (actionData.action === 'publish_course') {
+      if (actionData.payload.quizList) {
+        actionData.payload.quiz = JSON.stringify(actionData.payload.quizList)
+        delete actionData.payload.quizList
+      }
+      if (!actionData.payload.coverUrl || actionData.payload.coverUrl.includes('source.unsplash.com')) {
+        actionData.payload.coverUrl = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80'
+      }
+
+      const publishRes = await request.post('/api/course/publish', actionData.payload)
+      if (publishRes.code === 200) {
+        chatHistory.value[retryIndex].content =
+          `✅ **重试成功！课程《${actionData.payload.title}》已发布！**\n\n` +
+          `**【分类】** ${actionData.payload.category}\n` +
+          `**【测验题数】** ${actionData.payload.quiz ? JSON.parse(actionData.payload.quiz).length : 0} 道\n` +
+          `**【奖励积分】** ${actionData.payload.rewardPoints} 积分\n\n` +
+          `👉 教师可前往"安全课程"列表查看详细内容。`
+        pendingRetryCommand.value = ''
+      } else {
+        chatHistory.value[retryIndex].content = `❌ 重试发布仍然失败：${publishRes.message}`
+      }
+    } else {
+      chatHistory.value[retryIndex].content = '❌ 重试失败：模型未生成有效的课程发布指令。'
+    }
+  } catch (e) {
+    console.error('重试 Action 失败:', e)
+    chatHistory.value[retryIndex].content =
+      '❌ 重试仍然失败，建议您重新描述需求或简化课程主题后再试。\n\n' +
+      `错误详情：${e.message || '未知错误'}`
+  } finally {
+    loading.value = false
+    scrollToBottom()
+  }
+}
+
+// 挂载已在上方 onMounted 中完成
+
 </script>
 
 <style scoped>
@@ -538,5 +635,25 @@ const sendMessage = async () => {
 @keyframes bounce {
   0%, 80%, 100% { transform: scale(0); }
   40% { transform: scale(1); }
+}
+
+/* 重试按钮样式（v-html 内部需要 :deep） */
+:deep(.retry-action-btn) {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 20px;
+  background: #409eff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+:deep(.retry-action-btn:hover) {
+  background: #66b1ff;
+}
+:deep(.retry-action-btn:active) {
+  background: #3a8ee6;
 }
 </style>

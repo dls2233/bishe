@@ -46,6 +46,6 @@ llm:
     total-tokens: 6000
     system-tokens: 1200
     rag-tokens: 1600
-    rag-top-k: 3
+    rag-top-k: 5
     rag-chunk-chars: 400
-    rag-max-chars: 1800
+    rag-max-chars: 3600

@@ -167,4 +167,31 @@ public class ChatController {
             httpServletResponse.setStatus(500);
         }
     }
+
+    /**
+     * 非流式同步调用 LLM（供前端重试 Action 使用）
+     */
+    @PostMapping(value = "/completions-sync", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> chatSync(@RequestBody Map<String, Object> requestBody) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("model", requestBody.getOrDefault("model", model));
+        body.put("messages", requestBody.get("messages"));
+        body.put("temperature", requestBody.getOrDefault("temperature", 0.1));
+        body.put("max_tokens", requestBody.getOrDefault("max_tokens", 2000));
+        body.put("stream", false);
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
+        try {
+            return restTemplate.postForObject(apiUrl, entity, Map.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Object> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return error;
+        }
+    }
 }
