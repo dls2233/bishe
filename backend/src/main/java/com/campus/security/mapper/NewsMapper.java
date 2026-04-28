@@ -24,4 +24,7 @@ public interface NewsMapper {
     @org.apache.ibatis.annotations.Insert("INSERT INTO sys_news(title, category, content, cover_url, views) " +
             "VALUES(#{title}, #{category}, #{content}, #{coverUrl}, #{views})")
     int insert(News news);
+
+    @Select("SELECT * FROM sys_news WHERE create_time >= DATE_SUB(NOW(), INTERVAL #{hours} HOUR) ORDER BY create_time DESC")
+    List<News> findRecentNews(int hours);
 }

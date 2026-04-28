@@ -5,15 +5,16 @@ import com.campus.security.common.utils.JwtUtils;
 import com.campus.security.common.utils.SseSessionManager;
 import com.campus.security.entity.Alert;
 import com.campus.security.mapper.AlertMapper;
+import com.campus.security.task.SmartAlertTask;
+import com.campus.security.task.RealTimeHotspotAlert;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/alert")
@@ -27,6 +28,12 @@ public class AlertController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    @Autowired
+    private SmartAlertTask smartAlertTask;
+
+    @Autowired
+    private RealTimeHotspotAlert realTimeHotspotAlert;
 
     /**
      * 发布预警（仅用于演示，实际项目中需要做管理员权限校验）
@@ -76,5 +83,65 @@ public class AlertController {
         }
 
         return Result.success("推送成功");
+    }
+
+    /**
+     * 获取预警历史列表
+     */
+    @GetMapping("/list")
+    public Result<List<Alert>> list() {
+        return Result.success(alertMapper.findAll());
+    }
+
+    /**
+     * 【测试用】手动触发一次季节性预警
+     */
+    @PostMapping("/test-seasonal")
+    public Result<String> testSeasonalAlert() {
+        smartAlertTask.publishSeasonalAlert();
+        return Result.success("季节性预警测试触发成功");
+    }
+
+    /**
+     * 【测试用】模拟一条带危险关键词的新闻预警
+     */
+    @PostMapping("/test-keyword")
+    public Result<String> testKeywordAlert(@RequestBody Map<String, String> params) {
+        String keyword = params.getOrDefault("keyword", "诈骗");
+        String level = params.getOrDefault("level", "WARNING");
+        
+        Alert alert = new Alert();
+        alert.setTitle("🚨 安全资讯预警: " + keyword);
+        alert.setContent("注意！发现与'" + keyword + "'相关的安全资讯，请务必注意安全！\n这是一条测试预警消息。");
+        alert.setLevel(level);
+        alert.setStatus("ACTIVE");
+        
+        alertMapper.insert(alert);
+        
+        try {
+            String jsonMessage = objectMapper.writeValueAsString(alert);
+            SseSessionManager.broadcast(jsonMessage);
+        } catch (Exception e) {
+            return Result.error(500, "推送失败");
+        }
+        
+        return Result.success("关键词预警测试触发成功");
+    }
+
+    /**
+     * 获取所有热点事件列表
+     */
+    @GetMapping("/hotspots")
+    public Result<List<RealTimeHotspotAlert.HotspotEvent>> getHotspots() {
+        return Result.success(realTimeHotspotAlert.getAllHotspots());
+    }
+
+    /**
+     * 手动触发指定热点预警
+     */
+    @PostMapping("/trigger-hotspot/{index}")
+    public Result<String> triggerHotspot(@PathVariable int index) {
+        realTimeHotspotAlert.triggerTestAlert(index);
+        return Result.success("热点事件预警已触发");
     }
 }

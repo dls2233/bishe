@@ -57,7 +57,8 @@
         </el-form-item>
 
         <el-form-item label="学习内容" prop="content">
-          <el-input type="textarea" v-model="form.content" :rows="8" placeholder="请输入课程学习文章内容"></el-input>
+          <el-input type="textarea" v-model="form.content" :rows="8" placeholder="请输入课程学习文章内容 (至少1500字)"></el-input>
+          <div style="color: #909399; font-size: 12px; margin-top: 5px;">当前字数：{{ form.content.length }} / 1500</div>
         </el-form-item>
 
         <el-form-item label="奖励积分" prop="rewardPoints">
@@ -139,7 +140,19 @@ const form = reactive({
 const rules = {
   title: [{ required: true, message: '请输入课程标题', trigger: 'blur' }],
   category: [{ required: true, message: '请输入课程分类', trigger: 'blur' }],
-  content: [{ required: true, message: '请输入课程内容', trigger: 'blur' }],
+  content: [
+    { required: true, message: '请输入课程内容', trigger: 'blur' },
+    { 
+      validator: (rule, value, callback) => {
+        if (value && value.length < 1500) {
+          callback(new Error('课程内容至少需要1500字'))
+        } else {
+          callback()
+        }
+      }, 
+      trigger: 'blur' 
+    }
+  ],
   rewardPoints: [{ required: true, message: '请输入奖励积分', trigger: 'blur' }]
 }
 
@@ -154,8 +167,8 @@ const removeQuiz = (index) => {
 const submitForm = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      if (quizList.value.length === 0) {
-        ElMessage.warning('请至少添加一道测验题目')
+      if (quizList.value.length < 5) {
+        ElMessage.warning('请至少添加5道测验题目')
         return
       }
 

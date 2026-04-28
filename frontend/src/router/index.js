@@ -70,6 +70,11 @@ const routes = [
         path: 'teacher/exam/publish',
         name: 'PublishExam',
         component: () => import('../views/teacher/PublishExam.vue')
+      },
+      {
+        path: 'teacher/alert',
+        name: 'AlertCenter',
+        component: () => import('../views/teacher/AlertCenter.vue')
       }
     ]
   }

@@ -17,4 +17,7 @@ public interface ExamRecordMapper {
 
     @Select("SELECT COUNT(*) FROM sys_exam_record WHERE user_id = #{userId} AND exam_id = #{examId}")
     int countUserAttempts(Long userId, Long examId);
+
+    @Select("SELECT * FROM sys_exam_record ORDER BY create_time DESC LIMIT #{limit}")
+    List<ExamRecord> findRecentRecords(int limit);
 }

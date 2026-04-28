@@ -56,6 +56,29 @@ public class CourseServiceImpl implements CourseService {
         if (course.getTitle() == null || course.getTitle().isEmpty()) {
             return Result.error(400, "课程标题不能为空");
         }
+        
+        // 验证课程内容长度
+        if (course.getContent() == null || course.getContent().length() < 1500) {
+            return Result.error(400, "课程内容至少需要1500字");
+        }
+        
+        // 验证题目数量
+        String quiz = course.getQuiz();
+        if (quiz == null || quiz.isEmpty()) {
+            return Result.error(400, "请至少添加5道测验题目");
+        }
+        
+        // 解析 quiz JSON 并验证题目数量
+        try {
+            com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            java.util.List<java.util.Map<String, Object>> quizList = mapper.readValue(quiz, java.util.List.class);
+            if (quizList.size() < 5) {
+                return Result.error(400, "请至少添加5道测验题目");
+            }
+        } catch (Exception e) {
+            return Result.error(400, "题目数据格式错误");
+        }
+        
         String originalCover = course.getCoverUrl();
         String localCover = cacheCoverIfRemote(originalCover, course.getCategory());
         if (StringUtils.hasText(localCover)) {
