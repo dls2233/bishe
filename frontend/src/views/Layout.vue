@@ -65,16 +65,13 @@
               <span>教师管理台</span>
             </template>
             <el-menu-item index="/teacher/course/publish">
-              <el-icon><VideoPlay /></el-icon>
-              <span>发布课程</span>
+              <el-icon><Reading /></el-icon>发布课程
             </el-menu-item>
             <el-menu-item index="/teacher/exam/publish">
-              <el-icon><Edit /></el-icon>
-              <span>发布测评</span>
+              <el-icon><EditPen /></el-icon>发布测评
             </el-menu-item>
             <el-menu-item index="/teacher/alert">
-              <el-icon><Bell /></el-icon>
-              <span>智能预警中心</span>
+              <el-icon><Bell /></el-icon>智能预警中心
             </el-menu-item>
           </el-sub-menu>
         </el-menu>
@@ -94,7 +91,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { HomeFilled, VideoCamera, Document, Goods, DataBoard, User, Lock, Message, Management, ChatLineRound, Bell, VideoPlay, Edit } from '@element-plus/icons-vue'
+import { HomeFilled, VideoCamera, Document, Goods, DataBoard, User, Lock, Message, Management, ChatLineRound, Bell, Reading, EditPen } from '@element-plus/icons-vue'
 import { ElNotification, ElMessage } from 'element-plus'
 import request from '../utils/request'
 
